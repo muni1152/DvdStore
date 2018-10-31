@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-5.3.dtd">  
+
+<hibernate-mapping>
+<class name="com.ideas2it.dvdstore.model.Orders" table="ORDERS">
+
+<id name="orderId" column="ORDER_ID">
+ <generator class="increment"/>
+      </id>
+
+<property name="customerId" column="CUSTOMER_ID"/>
+<property name="orderDate" column="ORDER_DATE"/>
+
+<bag name="dvds" table="DVD_ORDER" lazy="false">
+
+<key column="ORDER_ID" />
+<many-to-many class="com.ideas2it.dvdstore.model.Dvd" column="DVD_ID"/>
+
+</bag>
+
+<many-to-one name="address" column="ADDRESS_ID" class="com.ideas2it.dvdstore.model.Address"  lazy="false"/>
+
+</class>
+
+</hibernate-mapping>

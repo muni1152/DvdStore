@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-5.3.dtd">  
+
+<hibernate-mapping>
+<class name="com.ideas2it.dvdstore.model.Customer" table="CUSTOMER">
+
+<id name="id" column="CUSTOMER_ID">
+ <generator class="increment"/>
+      </id>
+
+<property name="name" column="CUSTOMER_NAME"/>
+<property name="mobileNumber" column="MOBILE_NUMBER"/>
+<property name="mailId" column="MAIL_ID"/>
+
+<bag name="orders" table ="ORDERS" lazy="false" >
+  <key column="CUSTOMER_ID" />
+     <one-to-many class="com.ideas2it.dvdstore.model.Orders" />
+</bag>
+
+<bag name="addresses" cascade="save-update" table ="ADDRESS" lazy="false" >
+   <key column="CUSTOMER_ID" />
+      <one-to-many class="com.ideas2it.dvdstore.model.Address" />
+</bag>
+
+<many-to-one name="user" column="USER_ID" class="com.ideas2it.dvdstore.model.User" cascade="all" unique="true" lazy="false"/>
+
+</class>
+
+</hibernate-mapping>

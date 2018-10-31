@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-5.3.dtd">  
+
+<hibernate-mapping>
+<class name="com.ideas2it.dvdstore.model.Dvd" table="DVD">
+
+<id name="id" column="DVD_ID">
+ <generator class="native"/>
+      </id>
+
+<property name="name" column="NAME"/>
+<property name="price" column="PRICE"/>
+<property name="language" column="LANGUAGE"/>
+<property name="rating" column="RATING"/>
+<property name="releaseDate" column="RELEASE_DATE"/>
+<property name="status" column="STATUS"/>
+
+<bag name="categories" table="DVD_CATEGORY" lazy="false">
+<key column="DVD_ID"/>
+<many-to-many class="com.ideas2it.dvdstore.model.Category" column="CATEGORY_ID" />
+
+</bag>
+
+</class>
+
+</hibernate-mapping>
