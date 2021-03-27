@@ -525,7 +525,7 @@ public class DvdConstants {
         "\nAre you sure cancel Your Order..y/n\n";
 
     public static final String MESSAGE_DVD_CURRENT_PRICE = 
-         "DVD current price  = ";
+         "DVD current price   = ";
 
     public static final String MESSAGE_PRICE_DROPPED = "Price dropped ";
 
